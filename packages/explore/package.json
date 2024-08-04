@@ -1,17 +1,19 @@
 {
-  "name": "tractor_v2_app",
+  "name": "tractor_v2_explore",
   "version": "1.0.0",
   "scripts": {
     "serve": "NODE_ENV=development rspack serve",
     "build": "NODE_ENV=production rspack build"
   },
-  "app": "./src/index.html",
-  "types": "dist/index.d.ts",
+  "source": "src/index.tsx",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "importmap": {
     "imports": {},
     "inherit": [
-      "piral-base",
-      "piral-core"
+      "app"
     ]
   },
   "dependencies": {
@@ -24,11 +26,8 @@
     "@module-federation/enhanced": "^0.3.3",
     "@rspack/cli": "^0.7.5",
     "@rspack/core": "^0.7.5",
-    "@rspack/plugin-react-refresh": "^0.7.5",
-    "@types/node": "^20",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18",
-    "react-refresh": "^0.14.2",
+    "@types/react": "^18",
+    "@types/react-router-dom": "^5",
     "typescript": "^5"
   }
 }
