@@ -24,15 +24,15 @@ module.exports = {
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
+    historyApiFallback: true,
   },
   devtool: 'source-map',
   output: {
     path: __dirname + '/dist',
     uniqueName: name,
-    publicPath: 'http://localhost:3000/',
+    publicPath: 'auto',
     filename: '[name].js',
   },
-  watch: true,
   module: {
     rules: [
       {
@@ -41,7 +41,6 @@ module.exports = {
       },
       {
         test: /\.(jsx?|tsx?)$/,
-
         exclude: /(node_modules|\.webpack)/,
         use: [
           {
@@ -75,7 +74,6 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
     new rspack.ProgressPlugin({}),
-    isDev && new rspack.HotModuleReplacementPlugin(),
     new rspack.HtmlRspackPlugin({
       template: './index.html',
       excludedChunks: [name],
@@ -93,6 +91,6 @@ module.exports = {
         tractor_v2_explore: 'tractor_v2_explore@http://localhost:3003/remoteEntry.js',
       },
     }),
-    isDev ? new refreshPlugin() : null,
+    ...(isDev ? [new refreshPlugin()] : []),
   ],
 };

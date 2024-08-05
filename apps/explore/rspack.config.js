@@ -10,7 +10,6 @@ const name = 'tractor_v2_explore';
  * @type {import('@rspack/cli').Configuration}
  */
 module.exports = {
-  //context: __dirname,
   entry: { main: './src/index.tsx' },
   resolve: { extensions: ['...', '.ts', '.tsx', '.jsx'] },
   optimization: { minimize: false },
@@ -28,10 +27,9 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     uniqueName: name,
-    publicPath: 'http://localhost:3003/',
+    publicPath: 'auto',
     filename: '[name].js',
   },
-  watch: true,
   module: {
     rules: [
       {
@@ -40,7 +38,6 @@ module.exports = {
       },
       {
         test: /\.(jsx?|tsx?)$/,
-
         exclude: /(node_modules|\.webpack)/,
         use: [
           {
@@ -96,7 +93,7 @@ module.exports = {
         './StorePicker': path.resolve(__dirname) + '/src/StorePicker.tsx',
         './Header': path.resolve(__dirname) + '/src/Header.tsx',
         './Footer': path.resolve(__dirname) + '/src/Footer.tsx',
-      }
+      },
     }),
   ],
 };

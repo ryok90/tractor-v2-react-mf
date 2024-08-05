@@ -10,7 +10,6 @@ const name = 'tractor_v2_decide';
  * @type {import('@rspack/cli').Configuration}
  */
 module.exports = {
-  //context: __dirname,
   entry: { main: './src/index.tsx' },
   resolve: { extensions: ['...', '.ts', '.tsx', '.jsx'] },
   optimization: { minimize: false },
@@ -28,10 +27,9 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     uniqueName: name,
-    publicPath: 'http://localhost:3002/',
+    publicPath: 'auto',
     filename: '[name].js',
   },
-  watch: true,
   module: {
     rules: [
       {
@@ -40,7 +38,6 @@ module.exports = {
       },
       {
         test: /\.(jsx?|tsx?)$/,
-
         exclude: /(node_modules|\.webpack)/,
         use: [
           {
